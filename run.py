@@ -23,15 +23,23 @@ import seldom
 import time
 from seldom.mail import SMTP
 
+def mail():
+    smtp = SMTP(user='you@126.com', password='ABC123', host='smtp.126.com')
+    time.sleep(3)
+    smtp.sender(to='receive@mail.com')
+    return print('发送成功！')
+
+
 if __name__ == '__main__':
     seldom.main(
-        path='../test_case',
+        path='./test_case/test01_login.py',
         browser='chrome',
-        driver_path='../Browser_Driver/chromedriver84',
+        driver_path='./Browser_Driver/chromedriver84',
         debug=False,
         rerun=0,
-        timeout='10',
+        timeout=10,
         save_last_run=True,
         title='自动化测试报告',
         description='测试环境：Chrome'
     )
+    mail()

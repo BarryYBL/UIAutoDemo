@@ -12,16 +12,55 @@ from seldom import Seldom
 from pageObject.loginPage import login
 
 class test01_login(seldom.TestCase):
-    def start_class(self):
-        self.get(url=login.url)
+    def start(self):
+        self.dr = login(Seldom.driver)
+        self.dr.get(login.url)
         self.max_window()
+    def down(self):
+        self.quit()
+
+    @classmethod
+    def setUpClass(cls):
+        cls().start()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls().down()
 
     def test01(self):
-        """test01: 测试示例"""
-        self.dr = login(Seldom.driver)
+        """测试示例1"""
         self.dr.search_input(key='百度一下')
         self.dr.search_button()
         self.assertText("百度一下")
+        print('用例说明：test01')
+
+    def test02(self):
+        """测试示例2"""
+        self.dr.search_input(key='百度一下')
+        self.dr.search_button()
+        self.assertText("百度一下")
+        print('用例说明：test02')
+
+    def test03(self):
+        """测试示例3"""
+        self.dr.search_input(key='百度一下')
+        self.dr.search_button()
+        self.assertText("百度一下")
+        print('用例说明：test03')
+
+    def test04(self):
+        """测试示例4"""
+        self.dr.search_input(key='百度一下')
+        self.dr.search_button()
+        self.assertText("百度一下")
+        print('用例说明：test04')
+
+    def test05(self):
+        """测试示例5"""
+        self.dr.search_input(key='百度一下')
+        self.dr.search_button()
+        self.assertText("百度一下")
+        print('用例说明：test05')
 
 
 if __name__ == '__main__':

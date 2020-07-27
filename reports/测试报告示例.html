@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自动化测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.9.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/Chart.js/0.2.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="http://img.itest.info/seldom.css">
+
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { overflow: initial; }
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 20px;
+    margin-bottom: 1ex;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 23%;
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    box-shadow:0px 0px 5px #000;
+}
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+a.popup_link:hover {
+    color: red;
+}
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 12pt;
+    width: 500px;
+}
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+    margin-left: 10px;
+}
+#header_row {
+    font-weight: bold;
+    color: #606060;
+    background-color: #f5f5f5;
+    border-top-width: 10px;
+    border-color: #d6e9c6;
+	font-size: 15px;
+}
+#total_row  { font-weight: bold; background-color: #dee2e6;}
+.passClass  { background-color: #d6e9c6; }
+.failClass  { background-color: #faebcc; }
+.errorClass { background-color: #ebccd1; }
+.passCase   { color: #28a745; font-weight: bold;}
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.none {color: #009900 }
+.testcase   { margin-left: 2em; }
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+/* -- chars ---------------------------------------------------------------------- */
+.testChars {width: 900px;margin-left: 0px;}
+.error-color {
+    color: #fff;
+    background-color: #f44455;
+    border-color: #f44455;
+}
+.pass-color {
+    color: #fff;
+    background-color: #5fc27e;
+    border-color: #5fc27e;
+}
+.fail-color {
+    color: #fff;
+    background-color: #fcc100;
+    border-color: #fcc100;
+}
+.skip-color {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+/* -- screenshots ---------------------------------------------------------------------- */
+.img{
+	height: 100%;
+	border-collapse: collapse;
+}
+.screenshots {
+    z-index: 100;
+	position:fixed;
+	height: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+	display: none;
+	box-shadow:1px 2px 20px #333333;
+}
+.imgyuan{
+    height: 20px;
+    border-radius: 12px;
+    background-color: red;
+    padding-left: 13px;
+    margin: 0 auto;
+    position: relative;
+    top: -40px;
+    background-color: rgba(1, 150, 0, 0.3);
+}
+.imgyuan font{
+    border:1px solid white;
+    width:11px; 
+    height:11px;
+    border-radius:50%;
+    margin-right: 9px;
+    margin-top: 4px;
+    display: block;
+    float: left;
+    background-color: white;
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+function show_img(obj) {
+    var obj1 = obj.nextElementSibling
+    obj1.style.display='block'
+    var index = 0;//每张图片的下标，
+    var len = obj1.getElementsByTagName('img').length;
+    var imgyuan = obj1.getElementsByClassName('imgyuan')[0]
+    //var start=setInterval(autoPlay,500);
+    obj1.onmouseover=function(){//当鼠标光标停在图片上，则停止轮播
+        clearInterval(start);
+    }
+    obj1.onmouseout=function(){//当鼠标光标停在图片上，则开始轮播
+        start=setInterval(autoPlay,1000);
+    }    
+    for (var i = 0; i < len; i++) {
+        var font = document.createElement('font')
+        imgyuan.appendChild(font)
+    }
+    var lis = obj1.getElementsByTagName('font');//得到所有圆圈
+    changeImg(0)
+    var funny = function (i) {
+        lis[i].onmouseover = function () {
+            index=i
+            changeImg(i)
+        }
+    }
+    for (var i = 0; i < lis.length; i++) {
+        funny(i);
+    }
+    
+    function autoPlay(){
+        if(index>len-1){
+            index=0;
+            clearInterval(start); //运行一轮后停止
+        }
+        changeImg(index++);
+    }
+    imgyuan.style.width= 25*len +"px";
+    //对应圆圈和图片同步
+    function changeImg(index) {
+        var list = obj1.getElementsByTagName('img');
+        var list1 = obj1.getElementsByTagName('font');
+        for (i = 0; i < list.length; i++) {
+            list[i].style.display = 'none';
+            list1[i].style.backgroundColor = 'white';
+        }
+        list[index].style.display = 'block';
+        list1[index].style.backgroundColor = 'red';
+    }
+}
+function hide_img(obj){
+    obj.parentElement.style.display = "none";
+    obj.parentElement.getElementsByClassName('imgyuan')[0].innerHTML = "";
+}
+output_list = Array();
+/* level - 0:Summary; 1:Failed; 2:Skip; 3:All */
+function showCase(level, channel) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (["ft","pt","et","st"].indexOf(id.substr(0,2))!=-1){
+           if ( level == 0 && id.substr(2,1) == channel ) {
+                tr.className = 'hiddenRow';
+            }
+        }
+        if (id.substr(0,3) == 'pt'+ channel) {
+            if ( level == 1){
+                tr.className = '';
+            }
+            else if  (level > 4 && id.substr(2,1) == channel ){
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+         }
+        if (id.substr(0,3) == 'ft'+channel) {
+            if (level == 2) {
+                tr.className = '';
+            }
+            else if  (level > 4 && id.substr(2,1) == channel ){
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+          }
+        if (id.substr(0,3) == 'et'+channel) {
+            if (level == 3) {
+                tr.className = '';
+            }
+            else if  (level > 4 && id.substr(2,1) == channel ){
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+        if (id.substr(0,3) == 'st'+channel) {
+            if (level == 4) {
+                tr.className = '';
+            }
+            else if  (level > 4 && id.substr(2,1) == channel ){
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        if (!tr) {
+            tid = 'e' + tid0;
+            tr = document.getElementById(tid);
+        }
+        if (!tr) {
+            tid = 's' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+</script>
+
+<nav class="navbar navbar-expand navbar-light bg-white">
+    <a class="sidebar-toggle d-flex mr-2">
+        <i class="hamburger align-self-center"></i>
+    </a>
+    <h1 style="margin-bottom: 0px;">seldom</h1>
+    <div class="navbar-collapse collapse">
+        <ul class="navbar-nav ml-auto">
+            <h3 style="float: right;">自动化测试报告</h3>
+        </ul>
+    </div>
+</nav>
+<div style="height: 260px; margin-top: 20px;">
+<div class="col-12 col-lg-5 col-xl-3 d-flex" style="float:left">
+    <div class='card flex-fill'>
+        <div class="card-body my-2">
+        <table class="table my-0">
+            <tbody>
+            <tr><td>Start Time:</td><td class="text-right">2020-07-27 10:58:40</td></tr>
+<tr><td>Duration:</td><td class="text-right">0:00:51.516541</td></tr>
+<tr><td>Status:</td><td class="text-right">Passed:10</td></tr>
+
+            <tr><td>Description:</td><td class="text-right">测试环境：Chrome</td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+<div style="float:left; margin-left: 10px; margin-top: 20px;">
+    <p> Test Case Pie charts </p>
+    <h2 class="d-flex align-items-center mb-0 font-weight-light pass-color">10</h2>
+    <a>PASSED</a><br>
+    <h2 class="d-flex align-items-center mb-0 font-weight-light fail-color">0</h2>
+    <a>FAILED</a>
+    <h2 class="d-flex align-items-center mb-0 font-weight-light error-color">0</h2>
+    <a>ERRORS</a><br>
+    <h2 class="d-flex align-items-center mb-0 font-weight-light skip-color">0</h2>
+    <a>SKIPED</a><br>
+</div>
+<div class="testChars">
+    <canvas id="myChart" width="250" height="250"></canvas>
+</div>
+</div>
+
+
+<p id='show_detail_line' style="margin-left: 10px; margin-top: 30px;">
+<a href='javascript:showCase(0, 1)' class="btn btn-dark btn-sm">Summary</a>
+<a href='javascript:showCase(1, 1)' class="btn btn-success btn-sm">Pass</a>
+<a href='javascript:showCase(2, 1)' class="btn btn-warning btn-sm">Failed</a>
+<a href='javascript:showCase(3, 1)' class="btn btn-danger btn-sm">Error</a>
+<a href='javascript:showCase(4, 1)' class="btn btn-light btn-sm">Skip</a>
+<a href='javascript:showCase(5, 1)' class="btn btn-info btn-sm">All</a>
+</p>
+<table class="table mb-0">
+<thead>
+    <tr id='header_row'>
+        <td>Test Group/Test case</td>
+        <td>Count</td>
+        <td>Pass</td>
+        <td>Fail</td>
+        <td>Error</td>
+        <td>View</td>
+        <td>Screenshots</td>
+    </tr>
+</thead>
+
+<tr class='passClass'>
+    <td>test01_login.test01_login</td>
+    <td>10</td>
+    <td>10</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1.1',10)">Detail</a></td>
+    <td>&nbsp;</td>
+</tr>
+
+<tr id='pt1.1.1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test01: 测试示例1</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.1')" >
+        pass</a>
+    <div id='div_pt1.1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.1: 用例说明：test01
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.2' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test02: 测试示例2</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.2')" >
+        pass</a>
+    <div id='div_pt1.1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.2: 用例说明：test02
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.3' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test03: 测试示例3</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.3')" >
+        pass</a>
+    <div id='div_pt1.1.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.3: 用例说明：test03
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.4' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test04: 测试示例4</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.4')" >
+        pass</a>
+    <div id='div_pt1.1.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.4: 用例说明：test04
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.5' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test05: 测试示例5</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.5')" >
+        pass</a>
+    <div id='div_pt1.1.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.5: 用例说明：test05
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.6' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test06: 测试示例6</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.6')" >
+        pass</a>
+    <div id='div_pt1.1.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.6: 用例说明：test06
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.7' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test07: 测试示例7</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.7')" >
+        pass</a>
+    <div id='div_pt1.1.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.7: 用例说明：test07
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.8' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test08: 测试示例8</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.8')" >
+        pass</a>
+    <div id='div_pt1.1.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.8: 用例说明：test08
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.9' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test09: 测试示例9</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.9')" >
+        pass</a>
+    <div id='div_pt1.1.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.9: 用例说明：test09
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='pt1.1.10' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test10: 测试示例10</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1.10')" >
+        pass</a>
+    <div id='div_pt1.1.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1.10: 用例说明：test10
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
+    <td></td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>10</td>
+    <td class="text text-success">10</td>
+    <td class="text text-danger">0</td>
+    <td class="text text-warning">0</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+    <script type="text/javascript">
+var data = [
+	{
+		value: 0,
+		color: "#f44455",
+		label: "Error",
+		labelColor: 'white',
+		labelFontSize: '16'
+	},
+	{
+		value : 0,
+		color : "#fcc100",
+		label: "Fail",
+		labelColor: 'white',
+		labelFontSize: '16'
+	},
+	{
+		value : 10,
+		color : "#5fc27e",
+		label : "Pass",
+		labelColor: 'white',
+		labelFontSize: '16'
+	},
+    {
+		value : 0,
+		color : "#6c757d",
+		label : "skip",
+		labelColor: 'white',
+		labelFontSize: '16'
+	}
+]
+var newopts = {
+     animationSteps: 100,
+ 		animationEasing: 'easeInOutQuart',
+}
+//Get the context of the canvas element we want to select
+var ctx = document.getElementById("myChart").getContext("2d");
+var myNewChart = new Chart(ctx).Pie(data,newopts);
+</script>
+	
+</body>
+</html>
