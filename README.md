@@ -5,15 +5,13 @@ UI自动化测试框架模板
 
 ```
 -  PoiumAutoTest/
--  |── test_case/
+- |── test_case/
 -          |──models/
 -                    |── url.py
--          |──page_object/
+-          |──pageObject/
 -                    |── loginPage.py
--                    |── invoiceOpenPage.py
 -          |── test_login.py
--          |── test_invoiceOpen.py
-- |── driver/
+- |── Browser_Driver/
 -          |── chromedriver
 - |── reports/
 -          |—— 年_月_日_时_分_秒_result.html
