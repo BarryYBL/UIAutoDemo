@@ -1,15 +1,17 @@
 """
 说明：
 # 调用的到的 第三方模块：seldom、sys、time
-# 调用的到的 私有化模块：model/url、page_object/ invoiceOpenPage 下的 invoiceOpen\invoiceOpen_Validation
-#                     page_object\ loginPage 下的 login
+# from seldom import Seldom
+# import seldom
+# 调用的到的 私有化模块：model/page_object/
+
 # 运行时需要配置：
-# 1、setUpClass方法需要设定 启动的浏览器，默认为chrome; 设定该项目账号与密码
-# 2、单元测试不能生成测试报告，需要在run.py运行配置
+# 1、在pycharm运行时需要将'pageObject'配置环境变量，路径：Project-UIautoDemo-ProjectStructure
 """
 import seldom
 from seldom import Seldom
-from pageObject.loginPage import login
+from pageObject.loginPage import *
+
 
 class test01_login(seldom.TestCase):
     def start(self):
@@ -36,8 +38,9 @@ class test01_login(seldom.TestCase):
 
     def test02(self):
         """测试示例2"""
-        self.dr.search_input(key='百度一下')
-        self.dr.search_button()
+        self.dr.search_input_loc.clear()
+        self.dr.search_input_loc.send_keys('百度一下')
+        self.dr.search_button_loc.click()
         self.assertText("百度一下")
         print('用例说明：test02')
 
