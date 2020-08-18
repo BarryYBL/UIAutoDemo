@@ -34,7 +34,7 @@ if __name__ == '__main__':
     seldom.main(
         path='./test_case/test01_login.py',
         browser='chrome',
-        driver_path='./Browser_Driver/chromedriver84',
+        driver_path='Browser_Driver/chromedriver84(Mac64)',
         debug=False,
         rerun=0,
         timeout=10,
