@@ -1,9 +1,8 @@
 # -*-coding:utf-8-*-
 # 用于登录页元素定位
-import sys
-sys.path.append('./models')
-from models.url import Url
-from poium import Page, PageElement, PageElements, NewPageElement, PageWait, PageSelect
+from models import Url
+from poium import Page, NewPageElement
+
 
 class login(Page):
     """ 项目用户登录、退出定位元素"""

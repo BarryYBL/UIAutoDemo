@@ -14,19 +14,30 @@ main方法说明：
 
 邮件发送功能：
     引入'from seldom.mail import SMTP'
-    smtp = SMTP(user="you@126.com", password="abc123", host="smtp.126.com")
+    user = 'you@126.com'    # 发送邮件账号
+    password = 'ABC123'     # 发送邮件密码
+    host = 'smtp.126.com'   # host路径
+    to = 'receive@mail.com'     # 邮件接受者，如有多个','英文逗号分割
+    smtp = SMTP(user=user, password=password, host=host)
     time.sleep(3)
-    smtp.sender(to="receive@mail.com")
+    smtp.sender(to=to)
 """
+
 
 import seldom
 import time
 from seldom.mail import SMTP
+from models import osSystem
 
+# 配置e-mail信息
 def mail():
-    smtp = SMTP(user='you@126.com', password='ABC123', host='smtp.126.com')
+    user = 'you@126.com'    # 发送邮件账号
+    password = 'ABC123'     # 发送邮件密码
+    host = 'smtp.126.com'   # host路径
+    to = 'receive@mail.com'     # 邮件接受者，如有多个','英文逗号分割
+    smtp = SMTP(user=user, password=password, host=host)
     time.sleep(3)
-    smtp.sender(to='receive@mail.com')
+    smtp.sender(to=to)
     return print('发送成功！')
 
 
@@ -34,12 +45,13 @@ if __name__ == '__main__':
     seldom.main(
         path='./test_case/test01_login.py',
         browser='chrome',
-        driver_path='Browser_Driver/chromedriver84(Mac64)',
-        debug=False,
+        driver_path=osSystem(),  # 默认根据操作系统自行选择Chromedriver驱动
+        debug=True,
         rerun=0,
         timeout=10,
         save_last_run=True,
         title='自动化测试报告',
         description='测试环境：Chrome'
     )
-    mail()
+    """mail邮件发送；关闭注释启用"""
+    # mail()

@@ -4,20 +4,22 @@
 # from seldom import Seldom
 # import seldom
 # 调用的到的 私有化模块：model/page_object/
-
-# 运行时需要配置：
-# 1、在pycharm运行时需要将'pageObject'配置环境变量，路径：Project-UIautoDemo-ProjectStructure
 """
+
 import seldom
 from seldom import Seldom
-from pageObject.loginPage import *
-
+import sys
+import os
+sys.path.append(os.pardir)
+from models.osDriver import osSystem
+from PageObject.loginPage import login
 
 class test01_login(seldom.TestCase):
     def start(self):
         self.dr = login(Seldom.driver)
         self.dr.get(login.url)
         self.max_window()
+
     def down(self):
         self.quit()
 
@@ -70,7 +72,7 @@ if __name__ == '__main__':
     seldom.main(
         path='../test_case/test01_login.py',
         browser='chrome',
-        driver_path='../Browser_Driver/chromedriver84(Mac64)',
+        driver_path=osSystem('../'),
         debug=False,
         rerun=0,
         timeout=10,
