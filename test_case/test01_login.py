@@ -8,8 +8,8 @@
 
 import seldom
 from seldom import Seldom
-import sys
 import os
+import sys
 sys.path.append(os.pardir)
 from models.osDriver import osSystem
 from PageObject.loginPage import login

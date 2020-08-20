@@ -25,7 +25,6 @@ main方法说明：
 
 
 import seldom
-import time
 from models import osSystem
 from models.mail import sendMail
 
