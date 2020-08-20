@@ -8,7 +8,7 @@ main方法说明：
     debug ： debug模式，设置为True不生成测试HTML测试，默认为False,
     rerun : 设置失败重新运行次数，默认为 0,
     save_last_run : 设置只保存最后一次的结果，默认为False,
-    driver_path : 设置浏览器驱动的绝对路径。要和 browser 设置保持一致,
+    driver_path : 设置浏览器驱动的绝对路径。要和 browser 设置保持一致；默认,
     grid_url : 设置远程节点，selenium Grid doc,
     timeout : 设置超时时间，默认10秒
 
@@ -26,27 +26,22 @@ main方法说明：
 
 import seldom
 import time
-from seldom.mail import SMTP
 from models import osSystem
+from models.mail import sendMail
 
 # 配置e-mail信息
-def mail():
-    user = 'you@126.com'    # 发送邮件账号
-    password = 'ABC123'     # 发送邮件密码
-    host = 'smtp.126.com'   # host路径
-    to = 'receive@mail.com'     # 邮件接受者，如有多个','英文逗号分割
-    smtp = SMTP(user=user, password=password, host=host)
-    time.sleep(3)
-    smtp.sender(to=to)
-    return print('发送成功！')
+user = 'you@126.com'    # 发送者邮件账号
+password = 'DINODMVPZVSBPYKA'     # 发送者邮件授权码
+host = 'smtp.126.com'   # host路径
+to = 'to@mail.com'     # 邮件接收者，如有多个','英文逗号分割
 
 
 if __name__ == '__main__':
     seldom.main(
         path='./test_case/test01_login.py',
-        browser='chrome',
+        browser='chrome_headless',
         driver_path=osSystem(),  # 默认根据操作系统自行选择Chromedriver驱动
-        debug=True,
+        debug=False,
         rerun=0,
         timeout=10,
         save_last_run=True,
@@ -54,4 +49,4 @@ if __name__ == '__main__':
         description='测试环境：Chrome'
     )
     """mail邮件发送；关闭注释启用"""
-    # mail()
+    sendMail(user, password, host, to)

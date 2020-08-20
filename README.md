@@ -8,7 +8,7 @@ UI自动化测试框架模板
 
 #### 必看！
 
-+ ```UiAutoDemo```框架使用的是 ```PageObject```设计模式，简称```PO```；不懂什么是PO设计模式的请至（度娘，谷哥）
++ ```UiAutoDemo```框架使用的是 ```PageObject```设计模式，简称```PO```；不懂什么是PO设计模式的请至（度娘，谷哥🧐）
 + 使用的编译语言 ```Python```
 + 框架使用的是 ```seldom``` 与 ```poium``` 第三方库，往下看有介绍
 
@@ -32,15 +32,16 @@ UI自动化测试框架模板
 ```
 
 + ```testcase``` 文件夹用于存放页面元素，测试用例，公共元素
-    + ```test_login.py``` 测试用例部分
+    + ```- test_login.py``` 编写局部模块的测试用例并执行
 + ```models``` 文件夹存放公共元素，如url
-    + ```url.py``` 存放测试url路径
+    + ```- url.py``` 存放测试url路径
 + ```PageObject``` 文件夹存放测试过程中需要使用的页面元素
-    + ```loginPage.py``` 存放页面元素定位，封装元素实例化
+    + ```- loginPage.py``` 存放页面元素定位，封装元素实例化
 + ```Browser_Driver``` 文件夹存放浏览器驱动
-    + ```chromedriver84(Mac64)``` Mac操作系统Chrome驱动
-    + ```chromedriver84(win32).exe``` Windows操作系统Chrome驱动
+    + ```- chromedriver84(Mac64)``` Mac操作系统Chrome驱动
+    + ```- chromedriver84(win32).exe``` Windows操作系统Chrome驱动
 + ```reports``` 文件夹存放项目测试后生成的测试报告
++ ```run.py``` 执行所有的测试用例并执行
 
 #### 依赖库
 
