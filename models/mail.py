@@ -10,11 +10,9 @@ import time
 
 
 def sendMail(user, password, host, to, subject=None):
-    smtp = SMTP(user=user, password=password, host=host)
-    time.sleep(3)
     try:
+        smtp = SMTP(user=user, password=password, host=host)
+        time.sleep(3)
         smtp.sender(to=to, subject=subject)
-        smtp.sender(to=to)
-        return print('📮 Email sent successfull！')
     except Exception as error:
-        return error, print('❌ Email failed to send！\n', error)
+        return error

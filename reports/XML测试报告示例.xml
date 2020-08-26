@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite errors="0" failures="0" file="test01_login.py" name="test01_login.test01_login-20200826164952" skipped="0" tests="5" time="22.925" timestamp="2020-08-26T16:50:16">
+		<testcase classname="test01_login.test01_login" file="test_case/test01_login.py" line="34" name="test01" time="4.667" timestamp="2020-08-26T16:49:58">
+			<!--测试示例1-->
+			<system-out>
+<![CDATA[用例说明：test01
+]]>			</system-out>
+		</testcase>
+		<testcase classname="test01_login.test01_login" file="test_case/test01_login.py" line="41" name="test02" time="4.547" timestamp="2020-08-26T16:50:02">
+			<!--测试示例2-->
+			<system-out>
+<![CDATA[用例说明：test02
+]]>			</system-out>
+		</testcase>
+		<testcase classname="test01_login.test01_login" file="test_case/test01_login.py" line="49" name="test03" time="4.538" timestamp="2020-08-26T16:50:07">
+			<!--测试示例3-->
+			<system-out>
+<![CDATA[用例说明：test03
+]]>			</system-out>
+		</testcase>
+		<testcase classname="test01_login.test01_login" file="test_case/test01_login.py" line="56" name="test04" time="4.600" timestamp="2020-08-26T16:50:11">
+			<!--测试示例4-->
+			<system-out>
+<![CDATA[用例说明：test04
+]]>			</system-out>
+		</testcase>
+		<testcase classname="test01_login.test01_login" file="test_case/test01_login.py" line="63" name="test05" time="4.573" timestamp="2020-08-26T16:50:16">
+			<!--测试示例5-->
+			<system-out>
+<![CDATA[用例说明：test05
+]]>			</system-out>
+		</testcase>
+	</testsuite>
+</testsuites>
