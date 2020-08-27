@@ -84,7 +84,6 @@
 3、Chromedriver驱动调用```from models import osSystem```
 
 4、运行项目
-
 ![运行项目](https://s1.ax1x.com/2020/08/27/d4dPq1.png)
 
 5、查看报告
