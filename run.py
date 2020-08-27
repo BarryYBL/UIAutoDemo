@@ -10,17 +10,17 @@ main方法说明：
     save_last_run : 设置只保存最后一次的结果，默认为False,
     driver_path : 设置浏览器驱动的绝对路径。要和 browser 设置保持一致；默认,
     grid_url : 设置远程节点，selenium Grid doc,
-    timeout : 设置超时时间，默认10秒
+    timeout : 设置超时时间，默认10秒，
+    xmlrunner : 默认False，True生成xml格式的测试报告，html与xml报告二者选一
+
 
 邮件发送功能：
-    引入'from seldom.mail import SMTP'
+    引入'from models.mail import sendMail'
     user = 'you@126.com'    # 发送邮件账号
     password = 'ABC123'     # 发送邮件密码
     host = 'smtp.126.com'   # host路径
     to = 'receive@mail.com'     # 邮件接受者，如有多个','英文逗号分割
-    smtp = SMTP(user=user, password=password, host=host)
-    time.sleep(3)
-    smtp.sender(to=to)
+    sendMail(user, password, host, to)
 """
 
 
