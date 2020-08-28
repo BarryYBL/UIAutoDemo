@@ -142,6 +142,6 @@
 
 1.此项目仅是一个自动化测试项目的脚手架，并不是Python第三方库
 
-2.对selenium有一定的基础底子，能够很快用起来；纯小白也没关系，仔细阅读seldom与poium文档即可
+2.对selenium有一定的基础底子，能够很快用起来；纯小白也没关系，仔细阅读[seldom](https://github.com/SeldomQA/seldom/blob/master/docs/seldom_api.md) 与 [poium](https://github.com/SeldomQA/poium/wiki)文档即可
 
 3.后期会不断添加一些新奇功能便于测试项目的工作
