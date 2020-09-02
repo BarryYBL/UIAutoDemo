@@ -97,39 +97,39 @@
 #### seldom文档
 请阅读下面的文档，帮助你快速学习了解Seldom。
 
-* [seldom安装](./docs/install.md)
+* [seldom安装](https://github.com/SeldomQA/seldom/blob/master/docs/install.md)
 
-* [seldom创建项目](./docs/create_project.md)
+* [seldom创建项目](https://github.com/SeldomQA/seldom/blob/master/docs/create_project.md)
 
-* [浏览器&驱动](./docs/driver.md)
+* [浏览器&驱动](https://github.com/SeldomQA/seldom/blob/master/docs/driver.md)
 
-* [运行测试](./docs/run_test.md)
+* [运行测试](https://github.com/SeldomQA/seldom/blob/master/docs/run_test.md)
 
-* [main()方法](./docs/main.md)
+* [main()方法](https://github.com/SeldomQA/seldom/blob/master/docs/main.md)
 
-* [生成测试报告](./docs/reports.md)
+* [生成测试报告](https://github.com/SeldomQA/seldom/blob/master/docs/reports.md)
 
-* [seldom 元素定位](./docs/find_element.md)
+* [seldom 元素定位](https://github.com/SeldomQA/seldom/blob/master/docs/find_element.md)
 
-* [seldom API](./docs/seldom_api.md)
+* [seldom API](https://github.com/SeldomQA/seldom/blob/master/docs/seldom_api.md)
 
-* [keys键盘操作](./docs/keys.md)
+* [keys键盘操作](https://github.com/SeldomQA/seldom/blob/master/docs/keys.md)
 
-* [seldom 断言](./docs/assert.md)
+* [seldom 断言](https://github.com/SeldomQA/seldom/blob/master/docs/assert.md)
 
-* [用例失败重跑&自动截图](./docs/rerun_screenshot.md)
+* [用例失败重跑&自动截图](https://github.com/SeldomQA/seldom/blob/master/docs/rerun_screenshot.md)
 
-* [数据驱动最佳实践](./docs/parameterized.md)
+* [数据驱动最佳实践](https://github.com/SeldomQA/seldom/blob/master/docs/parameterized.md)
 
-* [实现Page Objects设计模式](./docs/poium.md)
+* [实现Page Objects设计模式](https://github.com/SeldomQA/seldom/blob/master/docs/poium.md)
 
-* [生成测试数据](./docs/testdata.md)
+* [生成测试数据](https://github.com/SeldomQA/seldom/blob/master/docs/testdata.md)
 
-* [跳过测试用例](./docs/skip.md)
+* [跳过测试用例](https://github.com/SeldomQA/seldom/blob/master/docs/skip.md)
 
-* [发邮件功能](./docs/send_mail.md)
+* [发邮件功能](https://github.com/SeldomQA/seldom/blob/master/docs/send_mail.md)
 
-* [test fixture](./docs/setupclass.md)
+* [test fixture](https://github.com/SeldomQA/seldom/blob/master/docs/setupclass.md)
 
 #### poium文档
 
