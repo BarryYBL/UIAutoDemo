@@ -32,7 +32,7 @@ class automatic(object):
     def mac_download_driver(self, path=''):
         latest_version = automatic().get_latest_version()
         mac_driver_url = self.url + latest_version + '/chromedriver_mac64.zip'
-        file = requests.get(mac_driver_url, timeout=30)
+        file = requests.get(mac_driver_url, timeout=60)
         with open(path + r'Browser_Driver/chromedriver.zip', 'wb') as zip_file:
             zip_file.write(file.content)
             log.info('Mac驱动下载成功！！！')
@@ -41,7 +41,7 @@ class automatic(object):
     def win_download_driver(self, path=''):
         latest_version = automatic().get_latest_version()
         win_driver_url = self.url + latest_version + '/chromedriver_win32.zip'
-        file = requests.get(win_driver_url)
+        file = requests.get(win_driver_url, timeout=60)
         with open(path + r'Browser_Driver/chromedriver.zip', 'wb') as zip_file:
             zip_file.write(file.content)
             log.info('Windows驱动下载成功！！！')
@@ -104,7 +104,7 @@ class automatic(object):
             log.info('✅当前系统Chromedriver已经是最新版本')
         else:
             log.info('当前系统Chromedriver不是最新版本，需要更新！！！ 请等待！！！')
-            automatic().mac_download_driver(path=path)
+            automatic().win_download_driver(path=path)
             automatic().Unpack_driver(path=path)
 
 def osSystem(path=''):
