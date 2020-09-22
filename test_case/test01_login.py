@@ -7,7 +7,7 @@
 """
 
 import seldom
-from seldom import Seldom
+from seldom import Seldom, ChromeConfig
 import os
 import sys
 sys.path.append(os.pardir)
@@ -69,10 +69,11 @@ class test01_login(seldom.TestCase):
 
 
 if __name__ == '__main__':
+    ChromeConfig.headless = False
+    ChromeConfig.executable_path = osSystem('../')  # 默认根据操作系统自行选择Chromedriver驱动
     seldom.main(
         path='../test_case/test01_login.py',
         browser='chrome',
-        driver_path=osSystem('../'),
         debug=False,
         rerun=0,
         timeout=10,

@@ -68,7 +68,7 @@
 
 +  Python3.7.4 >=
 +  poium0.6.3 >= (pip install poium)
-+  seldom1.6.0 >= (pip install seldom)
++  seldom1.7.0 >= (pip install seldom)
 
 #### PageObject设计模式
 

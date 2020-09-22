@@ -25,6 +25,7 @@ main方法说明：
 
 
 import seldom
+from seldom import ChromeConfig
 from models import osSystem
 from models.mail import sendMail
 
@@ -36,10 +37,11 @@ to = 'to@mail.com'     # 邮件接收者，如有多个','英文逗号分割
 
 
 if __name__ == '__main__':
+    ChromeConfig.headless = False
+    ChromeConfig.executable_path = osSystem()   # 默认根据操作系统自行选择Chromedriver驱动
     seldom.main(
         path='./test_case/test01_login.py',
-        browser='chrome_headless',
-        driver_path=osSystem(),  # 默认根据操作系统自行选择Chromedriver驱动
+        browser='chrome',
         debug=False,
         rerun=0,
         timeout=10,
