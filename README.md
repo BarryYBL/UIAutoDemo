@@ -80,7 +80,9 @@
 ```框架内的每个py文件都有注解；请使用者仔细阅读```
 
 1、此框架仅根据PageObject设计模式搭建的基础框架
+
 2、封装一些便于运行项目的模块
+
 3、Chromedriver驱动调用```from models import osSystem```
 
 4、运行项目
