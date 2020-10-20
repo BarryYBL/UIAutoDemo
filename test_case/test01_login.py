@@ -27,10 +27,6 @@ class test01_login(seldom.TestCase):
     def setUpClass(cls):
         cls().start()
 
-    @classmethod
-    def tearDownClass(cls):
-        cls().down()
-
     def test01(self):
         """测试示例1"""
         self.dr.search_input(key='百度一下')
