@@ -1,7 +1,7 @@
 # -*-coding:utf-8-*-
 # 用于登录页元素定位
 from models import Url
-from poium import Page, NewPageElement
+from poium import Page, Element
 
 
 class login(Page):
@@ -10,8 +10,8 @@ class login(Page):
     url = Url.baseUrl
 
     # 示例
-    search_input_loc = NewPageElement(id_='kw')
-    search_button_loc = NewPageElement(id_='su')
+    search_input_loc = Element(id_='kw')
+    search_button_loc = Element(id_='su')
 
     # 操作方法封装
     def search_input(self, key):

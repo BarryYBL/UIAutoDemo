@@ -1,4 +1,4 @@
-from seldom.mail import SMTP
+from seldom import SMTP
 import time
 
 # 配置e-mail信息
